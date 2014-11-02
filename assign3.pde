@@ -214,4 +214,4 @@ void keyPressed(){
                     gameState == GAME_LOSE)){
      gameState = GAME_START;
   }
-}
+} 
