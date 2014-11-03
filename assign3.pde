@@ -67,11 +67,10 @@ void draw(){
           break;
     case GAME_RUN:
           //---------------- put you code here ----
+          
           if (clickCount == (16-bombCount)){
             gameState = GAME_WIN;
           }
-
-
           // -----------------------------------
           break;
     case GAME_WIN:
@@ -89,22 +88,7 @@ void draw(){
 
 int countNeighborBombs(int col,int row){
   // -------------- Requirement B ---------
-  int count=0;
-       if(slot[col][row]==SLOT_BOMB){
-        return -1;
-       }
-      for(int i=-1; i<=1; i++){
-        for(int j=-1; j<=1; j++){
-          if((i!=0 || j!=0) && (col+i)>=0 && (col+i)<=3 && (row+j)>=0 && (row+j)<=3){
-            if(slot[col+i][row+j]==SLOT_BOMB){
-              count++;}
-            else if(slot[col+i][row+j]==SLOT_SAFE){
-             showSlot(col, row, count);
-            }
-          } 
-        }
-      }
-  return count;
+  return 0;
 }
 
 void setBombs(){
@@ -116,18 +100,20 @@ void setBombs(){
   }
   // -------------- put your code here ---------
   // randomly set bombs
-  for(int n=1; n<=bombCount; n++){
+    
+    for(int n=1; n<=bombCount; n++){
     while(true){
       int col = int(random(4));
       int row = int(random(4));
       if(slot[col][row] == SLOT_OFF){
         slot[col][row] = SLOT_BOMB;
         showSlot(col, row, SLOT_BOMB);
+        
         break;
       }
+      
     }
   }
-
   // ---------------------------------------
 }
 
@@ -203,7 +189,7 @@ void mousePressed(){
        mouseX >= ix && mouseX <= ix+sideLength && 
        mouseY >= iy && mouseY <= iy+sideLength){
     
-    // --------------- put you code here -------     
+    // --------------- put you code here ------- 
       int col = (mouseX - ix) / SLOT_SIZE;
       int row = (mouseY - iy) / SLOT_SIZE;   
       if ( slot[col][row] == SLOT_OFF ){
@@ -211,6 +197,7 @@ void mousePressed(){
         showSlot(col,row,slot[col][row]);
         clickCount++;
       }
+      
       if ( slot[col][row] == SLOT_BOMB ){
         slot[col][row] = SLOT_DEAD;
         showSlot(col,row,slot[col][row]);
@@ -228,4 +215,3 @@ void keyPressed(){
      gameState = GAME_START;
   }
 }
-
