@@ -210,6 +210,7 @@ void mousePressed(){
     }
     if ( slot[col][row] == SLOT_OFF){
       showSlot(col,row,SLOT_SAFE);
+      slot(col,row)==SLOT_SAFE;
       clickCount++;
     }
     // -------------------------
