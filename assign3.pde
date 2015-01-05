@@ -90,8 +90,8 @@ int countNeighborBombs(int col,int row){
   int count = 0;
   for (int i = col - 1; i <= col + 1; i++){
     for (int j = row -1 ; j<= row + 1; j++){
-       if (i >= 0 && i <= nSlot - 1 && 
-           j >= 0 && j <= nSlot - 1){ 
+       if (i >= 0 && i < nSlot && 
+           j >= 0 && j <= nSlot ){ 
           if (slot[i][j] == SLOT_BOMB){
             count++;
           }
